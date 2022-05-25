@@ -32,7 +32,7 @@ class Car extends Vehicle {
                 this.passenger = num;
                 return this.passenger;               
             } else {
-                console.log(this.model + " " + this.make + " don't have enough space to take all passengers.");
+                console.log(this.model + " " + this.make + " doesn't have enough space to take all passengers.");
             }
         } else {
             console.log(this.model + " " + this.make + " is full");
@@ -41,7 +41,7 @@ class Car extends Vehicle {
 }
 let myCar = new Car('Chevy', 'Spark', '2016', 'Azure', 72000)
     myCar.start()
-    myCar.loadPassenger(7)
+    myCar.loadPassenger(3)
     myCar.stop()
     myCar.checkService()
 console.log(myCar)
