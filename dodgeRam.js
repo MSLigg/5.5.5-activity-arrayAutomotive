@@ -1,28 +1,22 @@
 //this includes the vehicle class as a module
-const VehicleModule = require("./vehicle")
+const Vehicle = require("./vehicle").Vehicle
 
-//this shows how to call from this module...
-let v = new VehicleModule.Vehicle("Mecury", "Sedan", "1965", "color", "mileage");
-console.log(v.make)
-
-class Truck extends VehicleModule {
+class Car extends Vehicle {
     constructor(make, model, year, color, mileage) {
         super(make, model, year, color, mileage);
-        this.maxPassengers =3;
-        this.passenger =0;
-        this.numberOfWheels =4;
-        this.maxSpeed =200;
-        this.fuel =10;
-        this.scheduleService = true;
+        this.maxPassengers = 5;
+        this.passenger = 0;
+        this.numberOfWheels = 4;
+        this.maxSpeed = 160;
+        this.fuel = 10;
+        this.scheduleService = false;
     }
-
     checkService() {
-        if (this.mileage > 50000) {            
+        if (this.mileage > 30000) {            
             this.scheduleService = true
             return this.scheduleService;                       
         }
     }
-
     start() {
         if (this.fuel > 0) {            
             console.log('engine has started.');
@@ -32,7 +26,6 @@ class Truck extends VehicleModule {
             return this.started = false;
         }
     }
-
     loadPassenger(num) {
         if (this.passenger<this.maxPassengers) {
             if ((num + this.passenger) <= this.maxPassengers) {
@@ -40,16 +33,22 @@ class Truck extends VehicleModule {
                 return this.passenger;               
             } else {
                 console.log(this.model + " " + this.make + " don't have enough space to take all passengers.");
-
             }
         } else {
             console.log(this.model + " " + this.make + " is full");
         }
     }
+}
+let myCar = new Car('Chevy', 'Spark', '2016', 'Azure', 72000)
+    myCar.start()
+    myCar.loadPassenger(7)
+    myCar.stop()
+    myCar.checkService()
+console.log(myCar)
 
-let myTruck = new Truck('Dodge', 'RAM', '2022', 'Silver', 50000)
-    myTruck.start()
-    myTruck.loadPassenger(3)
-    myTruck.stop()
-    myTruck.checkService()
-console.log(myTruck)
+let myCarTruck = new Car('Dodge', 'RAM', '2022', 'Silver', 50000)
+    myCar.start()
+    myCar.loadPassenger(2)
+    myCar.stop()
+    myCar.checkService()
+console.log(myCarTruck)
